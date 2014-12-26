@@ -1,0 +1,29 @@
+kerberos:
+  libdefaults:
+    default_realm: ATHENA.MIT.EDU
+    dns_lookup_kdc: yes
+    dns_lookup_realm: yes
+  
+  realms:
+    ATHENA.MIT.EDU:
+      kdc:
+        - kerberos.mit.edu
+        - kerberos-1.mit.edu
+        - "kerberos.mit.edu:750"
+      admin_server: kerberos.mit.edu
+      master_kdc: kerberos.mit.edu
+
+    EXAMPLE.COM:
+      kdc:
+        - kerberos.example.com
+        - kerberos-1.example.com
+      admin_server: kerberos.example.com
+ 
+  domain_realm:
+    mit.edu: ATHENA.MIT.EDU
+ 
+  capaths:
+    ATHENA.MIT.EDU:
+      EXAMPLE.COM: .
+    EXAMPLE.COM:
+      ATHENA.MIT.EDU: .

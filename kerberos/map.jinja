@@ -1,0 +1,8 @@
+{% set kerberos = salt['grains.filter_by']({
+    'Debian': {
+        'pkg': 'krb5-user',
+    },
+    'FreeBSD': {
+        'root_group': 'wheel',
+    },
+}, merge=salt['pillar.get']('kerberos:lookup')) %}

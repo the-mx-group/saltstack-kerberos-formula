@@ -1,0 +1,45 @@
+{%- macro makeoutput(outdict) -%}
+  {%- for name, item in outdict.items() -%}
+  {{ output(name, item) }}  
+  {%- endfor %}
+{%- endmacro -%}
+
+{%- macro output(name, val, spaces=0) -%}
+  {%- set shift = spaces * " " %}
+  {%- if val is mapping %}
+    {{ shift }}{{ name }} = {
+    {%- for name, val in val.items() -%}
+    {{ output(name, val, spaces=spaces+4) }}
+    {%- endfor %}
+    {{ shift }}}
+  {%- elif val is string or val is number %}
+    {{ shift }}{{ name }} = {{ val }}
+  {%- else -%}
+    {%- for val in val -%}
+    {{ output(name, val, spaces=spaces) }}
+    {%- endfor %}
+  {%- endif %}
+{%- endmacro -%}
+
+# file managed by salt
+{%- set kerberos = pillar.get('kerberos', {}) %}
+
+[libdefaults]
+  {%- set libdefaults = kerberos.get('libdefaults', {}) -%}
+  {{ makeoutput(libdefaults) }}
+
+[realms]
+  {%- set realms = kerberos.get('realms', {}) -%}
+  {{ makeoutput(realms) }}
+
+[domain_realm]
+  {%- set domain = kerberos.get('domain_realm', {}) -%}
+  {{ makeoutput(domain) }}
+
+[capaths]
+  {%- set capaths = kerberos.get('capaths', {}) -%}
+  {{ makeoutput(capaths) }}
+
+[appdefaults]
+  {%- set appdefaults = kerberos.get('appdefaults', {}) -%}
+  {{ makeoutput(appdefaults) }}
