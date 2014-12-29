@@ -1,8 +1,9 @@
 {% from "kerberos/map.jinja" import kerberos with context %}
 
 {% if kerberos.pkg is defined %}
-pkg.installed:
-  - name: {{ kerberos.pkg }}
+kerberos-tools:
+  pkg.installed:
+    - name: {{ kerberos.pkg }}
 {% endif %}
 
 /etc/krb5.conf:
