@@ -1,22 +1,22 @@
 {%- macro makeoutput(outdict) -%}
-  {%- for name, item in outdict.items() -%}
-  {{ output(name, item) }}  
+  {%- for key, value in outdict|dictsort -%}
+  {{ output(key, value) }}  
   {%- endfor %}
 {%- endmacro -%}
 
-{%- macro output(name, val, spaces=0) -%}
+{%- macro output(key, value, spaces=0) -%}
   {%- set shift = spaces * " " %}
-  {%- if val is mapping %}
-    {{ shift }}{{ name }} = {
-    {%- for name, val in val.items() -%}
-    {{ output(name, val, spaces=spaces+4) }}
+  {%- if value is mapping %}
+    {{ shift }}{{ key }} = {
+    {%- for key, value in value|dictsort -%}
+    {{ output(key, value, spaces=spaces+4) }}
     {%- endfor %}
     {{ shift }}}
-  {%- elif val is string or val is number %}
-    {{ shift }}{{ name }} = {{ val }}
+  {%- elif value is string or value is number %}
+    {{ shift }}{{ key }} = {{ value }}
   {%- else -%}
-    {%- for val in val -%}
-    {{ output(name, val, spaces=spaces) }}
+    {%- for value in value -%}
+    {{ output(key, value, spaces=spaces) }}
     {%- endfor %}
   {%- endif %}
 {%- endmacro -%}
