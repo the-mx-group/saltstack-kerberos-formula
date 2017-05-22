@@ -16,6 +16,11 @@ Available states
 ``kerberos``
 ------------
 
+Meta state for kerberos.
+
+``kerberos.install``
+------------
+
 Installs the kerberos package.
 
 ``kerberos.config``
