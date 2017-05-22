@@ -12,7 +12,7 @@
       - mode
     - makedirs: True
 
-{%- for keytab in kerberos.get('keytab') %}
+{%- for keytab in salt['pillar.get']('kerberos:keytabs') %}
 /etc/krb5/{{ keytab }}:
   file.managed:
     - user: root

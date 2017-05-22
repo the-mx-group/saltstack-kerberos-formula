@@ -27,3 +27,6 @@ kerberos:
       EXAMPLE.COM: .
     EXAMPLE.COM:
       ATHENA.MIT.EDU: .
+
+  keytabs:
+    - http.keytab
