@@ -43,3 +43,7 @@
 [appdefaults]
   {%- set appdefaults = kerberos.get('appdefaults', {}) -%}
   {{ makeoutput(appdefaults) }}
+
+[logging]
+  {%- set logging = kerberos.get('logging', {}) -%}
+  {{ makeoutput(logging) }}
