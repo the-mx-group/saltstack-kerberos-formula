@@ -4,8 +4,8 @@
   file.directory:
     - user: root
     - group: root
-    - dir_mode: 750
-    - file_mode: 600
+    - dir_mode: 755
+    - file_mode: 644
     - recurse:
       - user
       - group
