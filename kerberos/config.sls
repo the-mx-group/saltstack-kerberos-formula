@@ -5,5 +5,5 @@
     - user: root
     - source: salt://kerberos/files/krb5.conf.jinja
     - group: {{ kerberos.get('root_group', 'root') }}
-    - mode: 444
+    - mode: 644
     - template: jinja
