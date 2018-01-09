@@ -3,8 +3,6 @@ kerberos:
     libdefaults:
       default_realm: ATHENA.MIT.EDU
       default_domain: athena.mit.edu
-      dns_lookup_kdc: yes
-      dns_lookup_realm: yes
   
     realms:
       ATHENA.MIT.EDU:

@@ -6,15 +6,6 @@ kerberos:
     libdefaults:
       default_realm: EXAMPLE.COM
       default_domain: example.com
-      dns_lookup_kdc: true
-      dns_lookup_realm: false
-      ticket_lifetime: 25h
-      renew_lifetime: 120h
-      forwardable: false
-      proxiable: false
-      rdns: false
-      clockskew: 300
-      allow_weak_crypto: false
     realms:
       EXAMPLE.COM:
         kdc:
@@ -43,10 +34,6 @@ kerberos:
     kprop_service: kprop
 
     kdcdefaults:
-      kdc_ports: 88
-      kdc_listen: 88
-      kdc_tcp_ports: 88
-      kdc_tcp_listen: 88
       default_keytab: /etc/krb5/krb5.keytab
       dict_file: /usr/share/dict/words
     realms:
@@ -54,10 +41,7 @@ kerberos:
       #database_name: /usr/local/var/krb5kdc/principal
       #key_stash_file: /usr/local/var/krb5kdc/.EXAMPLE.COM
       #acl_file: /var/kerberos/krb5kdc/kadm5.acl
-      kdc_listen: 88
-      kdc_tcp_listen: 88
       max_life: 10h 0m 0s
-      max_renewable_life: 7d 0h 0m 0s
     dbdefaults:
     dbmodules:
     otp:
