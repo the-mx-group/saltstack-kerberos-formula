@@ -6,6 +6,7 @@ kerberos:
     libdefaults:
       default_realm: EXAMPLE.COM
       default_domain: example.com
+      rdns: false
     realms:
       EXAMPLE.COM:
         kdc:
