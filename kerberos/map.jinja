@@ -76,4 +76,4 @@
 {% import_yaml 'kerberos/defaults.yaml' as defs %}
 {% do defs.kerberos.kdc.update( kdc_osmap ) %}
 {% do defs.kerberos.krb5.update( krb5_osmap ) %}
-{% set kerberos = salt['pillar.get']( 'kerberos', default=defs.kerberos) %}
+{% set kerberos = salt['pillar.get']( 'kerberos', default=defs.kerberos, merge=True) %}

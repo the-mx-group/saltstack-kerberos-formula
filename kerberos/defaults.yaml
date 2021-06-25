@@ -4,20 +4,8 @@ kerberos:
     client_config: /etc/krb5.conf
     client_config_src: salt://kerberos/files/krb5.conf
     libdefaults:
-      default_realm: EXAMPLE.COM
-      default_domain: example.com
-      rdns: false
     realms:
-      EXAMPLE.COM:
-        kdc:
-          - primary-dc.example.com
-          - slave-dc.example.com
-        admin_server: primary-dc.example.com
-        master_kdc: primary-dc.example.com
-        slave_kdc: slave-dc.example.com
     domain_realm:
-      .example.com: EXAMPLE.COM
-      example.com: EXAMPLE.COM
     capaths:
     appdefaults:
 
